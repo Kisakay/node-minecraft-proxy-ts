@@ -1,9 +1,10 @@
-const NodeRSA = require('node-rsa')
-const path = require('path')
+import NodeRSA from 'node-rsa';
+import path from 'path';
 
-const Proxy = require('./Proxy')
+import Proxy from './Proxy';
 
 const mcProtocolPath = require.resolve('minecraft-protocol')
+
 const localServerPlugins = [
   require(path.join(mcProtocolPath, '../server/handshake')),
   require(path.join(mcProtocolPath, '../server/login')),
@@ -20,7 +21,7 @@ const proxyPlugins = [
  * @param {Object} serverList An object that maps a 'serverName' to the server info
  * @returns {MinecraftProxy} A new Minecraft proxy
  */
-function createProxy (localServerOptions = {}, serverList = {}, proxyOptions = {}) {
+function createProxy(localServerOptions: { host?: "0.0.0.0" | undefined; "server-port": any; port?: any; motd?: "A Minecraft server" | undefined; "max-players"?: 20 | undefined; version: any; favicon: any; customPackets: any; }, serverList = {}, proxyOptions: { enablePlugins?: any; autoConnect?: any; autoFallback?: any; }) {
   const {
     host = '0.0.0.0',
     'server-port': serverPort,
@@ -46,16 +47,16 @@ function createProxy (localServerOptions = {}, serverList = {}, proxyOptions = {
     customPackets: customPackets
   }
 
-  const proxy = new Proxy(serverOptions, serverList, proxyOptions)
+  const proxy = new Proxy(serverOptions, serverList, proxyOptions as any)
   proxy.mcversion = mcversion
   proxy.motd = motd
   proxy.maxPlayers = maxPlayers
   proxy.playerCount = 0
   proxy.onlineModeExceptions = {}
   proxy.favicon = favicon
-  proxy.serverKey = new NodeRSA({b: 1024})
+  proxy.serverKey = new NodeRSA({ b: 1024 })
 
-  proxy.on('connection', function (client) {
+  proxy.on('connection', function (client: any) {
     localServerPlugins.forEach((plugin) => plugin(client, proxy, localServerOptions, proxyOptions))
     if (enablePlugins) proxyPlugins.forEach((plugin) => plugin(client, proxy, localServerOptions, proxyOptions))
   })
@@ -64,4 +65,4 @@ function createProxy (localServerOptions = {}, serverList = {}, proxyOptions = {
   return proxy
 }
 
-module.exports = createProxy
+export = createProxy;

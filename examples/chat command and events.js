@@ -1,27 +1,28 @@
 const McProxy = require('../')
 
+console.log(McProxy)
 /*
   CREATING PROXY
 */
 
 let localServerOptions = {
   'port': '25578',
-  'version': '1.12.1',
-  'online-mode': false,
+  'version': '1.8.9',
+  'online-mode': true,
   'motd': 'nodejs minecraft proxy'
 }
 
 let serverList = {
   hub: {
-    host: 'localhost',
+    host: 'play.hypixel.net',
     port: 25565,
     isDefault: true,
     isFallback: true
   },
-  minigames: {
-    host: 'localhost',
-    port: 25566
-  }
+  // minigames: {
+  //   host: 'localhost',
+  //   port: 25566
+  // }
 }
 
 let proxyOptions = {

@@ -1,6 +1,6 @@
 const Queue = require('queuejs')
 
-function replayer (remoteClient, localClient, callback) {
+function replayer(remoteClient: { write: (arg0: string, arg1: { dimension: any; difficulty: any; gamemode: any; levelType: any }) => void }, localClient: { on: (arg0: string, arg1: { (data: any, metadata: any): void; (data: any, metadata: any): void }) => void }, callback: () => void) {
   let packets = new Queue()
   let sentRespawn = false
 
@@ -31,4 +31,4 @@ function replayer (remoteClient, localClient, callback) {
   })
 }
 
-module.exports = replayer
+export = replayer

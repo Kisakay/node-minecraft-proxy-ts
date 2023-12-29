@@ -9,7 +9,7 @@
     "minecraft-proxy",
     "mc-proxy"
   ],
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -26,9 +26,12 @@
     "minecraft-data": "^2.26.0",
     "minecraft-protocol": "^1.5.1",
     "node-rsa": "^0.4.2",
-    "queuejs": "^0.1.0"
+    "queuejs": "^0.1.0",
+    "tslib": "^2.6.2",
+    "typescript": "^5.3.3"
   },
   "devDependencies": {
+    "@types/node-rsa": "^1.1.4",
     "eslint": "^4.19.1",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-import": "^2.11.0",
