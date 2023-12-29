@@ -8,8 +8,8 @@ console.log(McProxy)
 let localServerOptions = {
   'port': '25578',
   'version': '1.8.9',
-  'online-mode': true,
-  'motd': 'nodejs minecraft proxy'
+  'online-mode': false,
+  'motd': 'nodejs minecraft proxy',
 }
 
 let serverList = {
